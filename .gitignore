@@ -1,0 +1,5 @@
+# Ignore les dossiers/fichiers
+*
+!.gitignore
+!/src/*
+!/res/*
