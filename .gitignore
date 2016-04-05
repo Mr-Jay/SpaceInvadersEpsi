@@ -1,5 +1,7 @@
-# Ignore les dossiers/fichiers
+# Ignore tous les dossiers/fichiers
 *
+
+# Sauf ces fichiers
 !.gitignore
 !/src/*
 !/res/*
