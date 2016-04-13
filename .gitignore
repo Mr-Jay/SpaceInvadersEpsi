@@ -1,7 +1,16 @@
-# Ignore tous les dossiers/fichiers
-*
+### Example user template template
+### Example user template
 
-# Sauf ces fichiers
-!.gitignore
-!/src/*
-!/res/*
+# IntelliJ project files
+
+.idea/
+*.iml
+out
+gen/
+build.xml
+ant.properties
+proguard-project.txt
+local.properties
+README.md
+project.properties
+IHM/
