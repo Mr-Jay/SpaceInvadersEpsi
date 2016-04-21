@@ -8,13 +8,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
+import android.content.res.Resources;
+import android.graphics.*;
 import android.graphics.Paint.Style;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -70,23 +66,39 @@ public class SpaceInvaderView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
+		Resources res = getResources();
+		Paint paint = new Paint();
 		super.onDraw(canvas);
+		canvas.drawRGB(0, 0, 0);
+		canvas.drawRect(100, 0, 700, 500, paint); // (x, y, largeur, hauteur)
 
-		Drawable ship=getResources().getDrawable(R.drawable.ship);
-		ship.setBounds(shipPosX,1000,shipPosX+80,1080);
-		ship.draw(canvas);
-		/*canvas.drawRGB(0, 0, 0);
-		canvas.drawRect(0, 0, TARGET_WIDTH-1, TARGET_HEIGHT-1, paint);
+		for(int y=0; y <=400; y+=100)
+		{
+			for (int i=100 ; i<=600;i+=100)
+			{
+				Bitmap bitmap = BitmapFactory.decodeResource(res,R.drawable.alien1);
+				canvas.drawBitmap(bitmap, i, y, paint);
+			}
+		}
+
+		text= null;
 		if (text != null){
+			paint.setTextSize(50);
 			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
-		}*/
+		}
+
+		// Affichage du vaiseau
+		Bitmap bitmap = BitmapFactory.decodeResource(res,R.drawable.ship);
+		canvas.drawBitmap(bitmap, shipPosX, 800, paint);
 	}
 
 	public void click(View v)
 	{
 		if(v.getId()==R.id.left){
+			//Ajouter vérification bord écran
 			shipPosX-=5;
 		}else{
+			//Ajouter vérification bord écran
 			shipPosX+=5;
 		}
 		this.invalidate();
