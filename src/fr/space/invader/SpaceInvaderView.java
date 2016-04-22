@@ -54,7 +54,7 @@ public class SpaceInvaderView extends View {
 		paint.setTypeface(Typeface.SANS_SERIF);
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
-		text = "Texte";
+		text = null;
 	}
 
 
@@ -81,7 +81,6 @@ public class SpaceInvaderView extends View {
 			}
 		}
 
-		text= null;
 		if (text != null){
 			paint.setTextSize(50);
 			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);

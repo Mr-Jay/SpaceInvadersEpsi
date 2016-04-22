@@ -21,30 +21,10 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
         spView=(SpaceInvaderView) findViewById(R.id.spaceInvaderView1);
 
     }
-/*
-    @Override
-    public void onClick(View v) {
-        spView.click(v);
-    }
-*/
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-
-
-
             spView.click(v);
-            return true;
-
+        return true;
     }
-
-    /*
-    @Override
-    public boolean onLongClick(View v) {
-
-        spView.click(v);
-        return false;
-    }
-    */
 }
