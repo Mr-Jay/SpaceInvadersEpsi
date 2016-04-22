@@ -1,4 +1,4 @@
-package fr.dubois.space.invader;
+package fr.space.invader;
 
 
 

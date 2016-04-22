@@ -1,11 +1,9 @@
-package fr.dubois.space.invader;
+package fr.space.invader;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 
 public class SpaceInvaderActivity extends Activity implements View.OnTouchListener {
