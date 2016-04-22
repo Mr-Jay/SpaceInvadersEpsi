@@ -1,22 +1,11 @@
 package fr.space.invader;
 
-
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.*;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class SpaceInvaderView extends View {
@@ -37,12 +26,10 @@ public class SpaceInvaderView extends View {
 	public SpaceInvaderView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		block=new InvadersBlock();
-
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-
 		Resources res = getResources();
 		joueur=new Joueur(res.getDrawable(R.drawable.ship));
 		Paint paint = new Paint();
@@ -60,17 +47,14 @@ public class SpaceInvaderView extends View {
 			}
 		}
 
-
 		joueur.draw(canvas);
 		canvas.save();
 		block.draw(canvas);
 		canvas.restore();
-
 	}
 
 	public void click(View v)
 	{
-
 		if(v.getId()==R.id.left){
 			joueur.moveLeft();
 		}else{
@@ -79,7 +63,6 @@ public class SpaceInvaderView extends View {
 		thread = new ThreadSpaceInvader(myHandler,block);
 		Thread thread2 = new Thread(thread);
 		thread2.start();
-
 	}
 
 	private int computeSize(int spec,int def){

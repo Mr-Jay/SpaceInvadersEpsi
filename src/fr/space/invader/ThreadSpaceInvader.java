@@ -11,6 +11,7 @@ public class ThreadSpaceInvader implements Runnable {
     private Handler handler;
     private long currentTime,startTime;
     private InvadersBlock block;
+    private Joueur leJoueur;
 
     public ThreadSpaceInvader(Handler myHandler,InvadersBlock block){
         super();
@@ -33,6 +34,14 @@ public class ThreadSpaceInvader implements Runnable {
             handler.sendEmptyMessage(0);
             if(tick%10==0){
               block.setPosX(block.getPosX()-50);
+            }
+            if(SpaceInvaderActivity.isPressed){
+                if(SpaceInvaderActivity.pos == 'l'){
+                    leJoueur.moveLeft();
+                }
+                else if(SpaceInvaderActivity.pos == 'r'){
+                    leJoueur.moveRight();
+                }
             }
             tick++;
         }
