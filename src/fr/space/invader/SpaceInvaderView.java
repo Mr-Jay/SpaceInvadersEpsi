@@ -25,84 +25,63 @@ public class SpaceInvaderView extends View {
 	private static final int TARGET_HEIGHT = 800;
 	private static final int TARGET_WIDTH = 600;
 	private int shipPosX;
-	private Paint paint; // Style pour le texte
-	private String text; // texte à afficher
-
-
-	public SpaceInvaderView(Context context) {
-		super(context);
-		init();
-	}
-
-	public SpaceInvaderView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		init();
-	}
+	private Joueur joueur;
+	private InvadersBlock block;
+	private ThreadSpaceInvader thread;
+	private Handler myHandler=new Handler(){
+		public void handleMessage(Message msg){
+			invalidate();
+		}
+	};
 
 	public SpaceInvaderView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init();
+		block=new InvadersBlock();
+
 	}
-
-
-	
-
-	void init(){
-		paint = new Paint();
-		paint.setStyle(Style.STROKE);
-		paint.setColor(Color.YELLOW);
-		paint.setTypeface(Typeface.SANS_SERIF);
-		paint.setTextSize(36);
-		paint.setTextAlign(Paint.Align.CENTER);
-		text = "Texte";
-	}
-
-
-
-
-
-
-
 
 	@Override
 	protected void onDraw(Canvas canvas) {
+
 		Resources res = getResources();
+		joueur=new Joueur(res.getDrawable(R.drawable.ship));
 		Paint paint = new Paint();
-		super.onDraw(canvas);
+		//super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(100, 0, 700, 500, paint); // (x, y, largeur, hauteur)
 
+		//todo vider la liste de InvadersBlock
+
 		for(int y=0; y <=400; y+=100)
 		{
-			for (int i=100 ; i<=600;i+=100)
+			for (int i=0 ; i<=500;i+=100)
 			{
-				Bitmap bitmap = BitmapFactory.decodeResource(res,R.drawable.alien1);
-				canvas.drawBitmap(bitmap, i, y, paint);
+				block.addInvader(new Invader(i+block.getPosX(),y+block.getPosY(),res.getDrawable(R.drawable.alien1)));
 			}
 		}
 
-		text= null;
-		if (text != null){
-			paint.setTextSize(50);
-			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
-		}
 
-		// Affichage du vaiseau
-		Bitmap bitmap = BitmapFactory.decodeResource(res,R.drawable.ship);
-		canvas.drawBitmap(bitmap, shipPosX, 800, paint);
+		joueur.draw(canvas);
+		canvas.save();
+		block.draw(canvas);
+		canvas.restore();
+
 	}
 
 	public void click(View v)
 	{
+
 		if(v.getId()==R.id.left){
-			//Ajouter vérification bord écran
-			shipPosX-=5;
+			joueur.moveLeft();
 		}else{
-			//Ajouter vérification bord écran
-			shipPosX+=5;
+			joueur.moveRight();
 		}
-		this.invalidate();
+		thread = new ThreadSpaceInvader(myHandler,block);
+		Thread thread2 = new Thread(thread);
+		thread2.start();
+
 	}
+
 	private int computeSize(int spec,int def){
 		int mode = View.MeasureSpec.getMode(spec);
 		if (mode == View.MeasureSpec.UNSPECIFIED) return def;
