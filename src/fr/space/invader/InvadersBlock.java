@@ -46,7 +46,9 @@ public class InvadersBlock extends Drawable {
         }
     }
 
-
+    public void eraseList(){
+        invadersList=new ArrayList<Invader>();
+    }
     @Override
     public void setAlpha(int alpha) {
 
@@ -60,5 +62,13 @@ public class InvadersBlock extends Drawable {
     @Override
     public int getOpacity() {
         return 0;
+    }
+
+    public void move(Boolean direction) {
+        if(direction){
+            posX+=50;
+        }else{
+            posX-=50;
+        }
     }
 }

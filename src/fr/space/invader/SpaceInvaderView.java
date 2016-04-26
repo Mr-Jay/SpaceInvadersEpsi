@@ -25,7 +25,7 @@ public class SpaceInvaderView extends View {
 	private static final int TARGET_HEIGHT = 800;
 	private static final int TARGET_WIDTH = 600;
 	private int shipPosX;
-	private Joueur joueur;
+	private Joueur joueur=new Joueur(getResources().getDrawable(R.drawable.ship));
 	private InvadersBlock block;
 	private ThreadSpaceInvader thread;
 	private Handler myHandler=new Handler(){
@@ -44,14 +44,12 @@ public class SpaceInvaderView extends View {
 	protected void onDraw(Canvas canvas) {
 
 		Resources res = getResources();
-		joueur=new Joueur(res.getDrawable(R.drawable.ship));
 		Paint paint = new Paint();
 		//super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(100, 0, 700, 500, paint); // (x, y, largeur, hauteur)
 
-		//todo vider la liste de InvadersBlock
-
+		block.eraseList();
 		for(int y=0; y <=400; y+=100)
 		{
 			for (int i=0 ; i<=500;i+=100)
@@ -76,12 +74,14 @@ public class SpaceInvaderView extends View {
 		}else{
 			joueur.moveRight();
 		}
-		thread = new ThreadSpaceInvader(myHandler,block);
-		Thread thread2 = new Thread(thread);
-		thread2.start();
+
 
 	}
-
+	public void startGame(){
+		thread = new ThreadSpaceInvader(myHandler,block,joueur);
+		Thread thread2 = new Thread(thread);
+		thread2.start();
+	}
 	private int computeSize(int spec,int def){
 		int mode = View.MeasureSpec.getMode(spec);
 		if (mode == View.MeasureSpec.UNSPECIFIED) return def;
@@ -101,4 +101,7 @@ public class SpaceInvaderView extends View {
 		this.setMeasuredDimension(x,y);
 	}
 
+	public void moveShip(boolean left, boolean right) {
+		joueur.move(left,right);
+	}
 }
