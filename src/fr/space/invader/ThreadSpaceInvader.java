@@ -12,12 +12,14 @@ public class ThreadSpaceInvader implements Runnable {
     private long currentTime,startTime;
     private InvadersBlock block;
     private Joueur ship;
+    private int screenWidth;
 
-    public ThreadSpaceInvader(Handler myHandler,InvadersBlock block,Joueur ship){
+    public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship, int screenWidth){
         super();
         handler=myHandler;
         this.block=block;
         this.ship=ship;
+        this.screenWidth=screenWidth;
     }
 
     @Override
@@ -44,9 +46,10 @@ public class ThreadSpaceInvader implements Runnable {
             handler.sendEmptyMessage(0);
 
             if(tick%10==0){
+                System.out.println(block.getWidth());
                 if(block.getPosX()==0) {
                     direction=true;//Right
-                }else if(block.getPosX()==450){
+                }else if(block.getPosX()==screenWidth-block.getWidth()){
                     direction=false;//Left
                 }
                 block.move(direction);
