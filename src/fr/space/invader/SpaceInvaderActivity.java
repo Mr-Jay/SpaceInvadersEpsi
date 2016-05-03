@@ -10,7 +10,8 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
     /** Called when the activity is first created. */
     private Button leftBut,rightBut;
     private SpaceInvaderView spView;
-    private boolean isPressed=false;
+    private boolean rightIsPressed,leftIsPressed=false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
         leftBut.setOnTouchListener(this);
         rightBut.setOnTouchListener(this);
         spView=(SpaceInvaderView) findViewById(R.id.spaceInvaderView1);
+        spView.startGame();
 
     }
 
@@ -28,13 +30,11 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
     public boolean onTouch(View v, MotionEvent event) {
         if(event.getAction()==MotionEvent.ACTION_DOWN)
         {
-            isPressed=true;
+            if(v.getId()==R.id.left) spView.moveShip(true,false);
+            if(v.getId()==R.id.right) spView.moveShip(false,true);
+
         }
-        else if(event.getAction()==MotionEvent.ACTION_UP)
-        {
-            isPressed=false;
-        }
-        spView.click(v);
+        else if(event.getAction()==MotionEvent.ACTION_UP) spView.moveShip(false,false);
         return true;
     }
 
