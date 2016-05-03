@@ -87,4 +87,8 @@ public class InvadersBlock extends Drawable {
         height=5*dm.widthPixels/10;
         this.setBounds(posX,posY,posX+width,posY+height);
     }
+
+    public void addY(int i) {
+        posY+=50;
+    }
 }

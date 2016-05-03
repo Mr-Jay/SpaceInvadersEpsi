@@ -8,10 +8,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class SpaceInvaderActivity extends Activity implements View.OnTouchListener {
     /** Called when the activity is first created. */
-    private Button leftBut,rightBut;
+    private ImageButton leftBut,rightBut;
     private SpaceInvaderView spView;
 
 
@@ -22,8 +23,8 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        leftBut=(Button) findViewById(R.id.left);
-        rightBut = (Button) findViewById(R.id.right);
+        leftBut=(ImageButton) findViewById(R.id.left);
+        rightBut = (ImageButton) findViewById(R.id.right);
         leftBut.setOnTouchListener(this);
         rightBut.setOnTouchListener(this);
         spView=(SpaceInvaderView) findViewById(R.id.spaceInvaderView1);
