@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 public class Joueur extends Drawable{
     private int posX;
     private Drawable ship;
+    private boolean left,right=false;
 
     public Joueur(Drawable drawable){
         posX=300;
@@ -22,20 +23,16 @@ public class Joueur extends Drawable{
         return ship;
     }
 
-    public void moveLeft(){
-        posX-=15;
-    }
 
-    public void moveRight(){
-        posX+=15;
-    }
     public int getPosX() {
         return posX;
     }
 
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas)
+    {
+        ship.setBounds(posX,700,posX+100,800);
         ship.draw(canvas);
     }
 
@@ -52,5 +49,21 @@ public class Joueur extends Drawable{
     @Override
     public int getOpacity() {
         return 0;
+    }
+
+    public void move(boolean left, boolean right) {
+        this.left=left;
+        this.right=right;
+    }
+    public void moveLeft() {posX-=25;}
+    public void moveRight() {posX+=25;}
+
+    public boolean getRight()
+    {
+        return right;
+    }
+    public boolean getLeft()
+    {
+        return left;
     }
 }

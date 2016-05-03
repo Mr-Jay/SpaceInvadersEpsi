@@ -1,7 +1,6 @@
 package fr.space.invader;
 
 import android.os.Handler;
-import android.os.SystemClock;
 
 /**
  * Created by Adrien on 22/04/2016.
@@ -11,16 +10,18 @@ public class ThreadSpaceInvader implements Runnable {
     private Handler handler;
     private long currentTime,startTime;
     private InvadersBlock block;
-    private Joueur leJoueur;
+    private Joueur ship;
 
-    public ThreadSpaceInvader(Handler myHandler,InvadersBlock block){
+    public ThreadSpaceInvader(Handler myHandler,InvadersBlock block,Joueur ship){
         super();
         handler=myHandler;
         this.block=block;
+        this.ship=ship;
     }
 
     @Override
     public void run() {
+        Boolean direction=false;
         runThread=true;
         startTime= System.currentTimeMillis();
         int tick=0;
@@ -31,17 +32,25 @@ public class ThreadSpaceInvader implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            handler.sendEmptyMessage(0);
-            if(tick%10==0){
-              block.setPosX(block.getPosX()-50);
+            if(ship.getLeft())
+            {
+                ship.moveLeft();
             }
-            if(SpaceInvaderActivity.isPressed){
-                if(SpaceInvaderActivity.pos == 'l'){
-                    leJoueur.moveLeft();
+            else if(ship.getRight())
+            {
+                ship.moveRight();
+            }
+            handler.sendEmptyMessage(0);
+
+            if(tick%10==0){
+                if(block.getPosX()==0) {
+                    block.addY(50);
+                    direction=true;//Right
+                }else if(block.getPosX()==450){
+                    direction=false;//Left
+                    block.addY(50);
                 }
-                else if(SpaceInvaderActivity.pos == 'r'){
-                    leJoueur.moveRight();
-                }
+                block.move(direction);
             }
             tick++;
         }
