@@ -17,13 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f761255c-ff05-48e8-a55e-e0af384b8e96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/droite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/gauche.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fr/space/invader/Missile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/Invader.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/Invader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/InvadersBlock.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/InvadersBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/Joueur.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/Joueur.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderActivity.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderView.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/space/invader/ThreadSpaceInvader.java" afterPath="$PROJECT_DIR$/src/fr/space/invader/ThreadSpaceInvader.java" />
@@ -61,8 +59,8 @@
       <file leaf-file-name="SpaceInvaderView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="1672">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -71,9 +69,11 @@
       <file leaf-file-name="ThreadSpaceInvader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fr/space/invader/ThreadSpaceInvader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="176">
+              <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,11 +81,10 @@
       <file leaf-file-name="InvadersBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/space/invader/InvadersBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+            <state relative-caret-position="1086">
+              <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
               <folding>
-                <element signature="e#1456#1457#0" expanded="true" />
-                <element signature="e#1482#1483#0" expanded="true" />
+                <element signature="e#1861#1862#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="704">
-              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -695,7 +694,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -972,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="1672">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -989,7 +990,7 @@
     <entry file="file://$PROJECT_DIR$/src/fr/space/invader/SpaceInvaderActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -999,28 +1000,28 @@
         <state relative-caret-position="404">
           <caret line="74" column="4" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="4" />
           <folding>
-            <element signature="e#1456#1457#0" expanded="true" />
-            <element signature="e#1482#1483#0" expanded="true" />
+            <element signature="e#1861#1862#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/space/invader/InvadersBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        <state relative-caret-position="1086">
+          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
           <folding>
-            <element signature="e#1456#1457#0" expanded="true" />
-            <element signature="e#1482#1483#0" expanded="true" />
+            <element signature="e#1861#1862#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/space/invader/ThreadSpaceInvader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="176">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

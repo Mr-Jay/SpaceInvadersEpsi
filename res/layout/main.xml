@@ -8,7 +8,7 @@
     <fr.space.invader.SpaceInvaderView
         android:id="@+id/spaceInvaderView1"
         android:layout_width="match_parent"
-        android:layout_height="900px" />
+        android:layout_height="447dp" />
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
