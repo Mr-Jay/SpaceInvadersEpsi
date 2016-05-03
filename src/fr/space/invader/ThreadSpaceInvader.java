@@ -48,11 +48,11 @@ public class ThreadSpaceInvader implements Runnable {
             if(tick%10==0){
                 System.out.println(block.getWidth());
                 if(block.getPosX()==0) {
-                    block.addY(50);
+                    block.addY(25);
                     direction=true;//Right
-                }else if(block.getPosX()==screenWidth-block.getWidth()){
+                }else if(block.getPosX()>=screenWidth-block.getWidth()){
                     direction=false;//Left
-                    block.addY(50);
+                    block.addY(25);
                 }
                 block.move(direction);
             }
