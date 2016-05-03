@@ -1,7 +1,6 @@
 package fr.space.invader;
 
 import android.os.Handler;
-import android.os.SystemClock;
 
 /**
  * Created by Adrien on 22/04/2016.
@@ -48,9 +47,11 @@ public class ThreadSpaceInvader implements Runnable {
             if(tick%10==0){
                 System.out.println(block.getWidth());
                 if(block.getPosX()==0) {
+                    InvadersBlock.posY+=50;
                     direction=true;//Right
                 }else if(block.getPosX()==screenWidth-block.getWidth()){
                     direction=false;//Left
+                    InvadersBlock.posY+=50;
                 }
                 block.move(direction);
             }
