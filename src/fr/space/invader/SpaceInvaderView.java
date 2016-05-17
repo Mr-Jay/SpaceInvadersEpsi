@@ -1,23 +1,13 @@
 package fr.space.invader;
 
 
-
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.*;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class SpaceInvaderView extends View {
@@ -29,10 +19,8 @@ public class SpaceInvaderView extends View {
 	private Joueur joueur=new Joueur(getResources().getDrawable(R.drawable.ship));
 	private InvadersBlock block;
 	private ThreadSpaceInvader thread;
-
 	private DisplayMetrics dm;
-
-
+	private Missile missile=new Missile(getResources().getDrawable(R.drawable.missile), joueur);
 
 	public void setdm(DisplayMetrics dm)
 	{
@@ -49,8 +37,6 @@ public class SpaceInvaderView extends View {
 
 		super(context, attrs);
 		block=new InvadersBlock(dm);
-
-
 	}
 
 	@Override
@@ -71,13 +57,11 @@ public class SpaceInvaderView extends View {
 				block.addInvader(new Invader(i+block.getPosX(),y+block.getPosY(),res.getDrawable(R.drawable.alien1),block.getWidth()));
 			}
 		}
-
-
 		joueur.draw(canvas);
+		//missile.draw(canvas);
 		canvas.save();
 		block.draw(canvas);
 		canvas.restore();
-
 	}
 
 /*	public void click(View v)
@@ -88,15 +72,12 @@ public class SpaceInvaderView extends View {
 		}else{
 			joueur.moveRight();
 		}
-
-
 	}*/
 	public void startGame(){
-		thread = new ThreadSpaceInvader(myHandler,block,joueur,dm.widthPixels);
+		thread = new ThreadSpaceInvader(myHandler,block,joueur,missile,dm.widthPixels);
 		Thread thread2 = new Thread(thread);
 		thread2.start();
 	}
-
 
 	public void moveShip(boolean left, boolean right) {
 		joueur.move(left,right);

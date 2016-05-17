@@ -1,7 +1,6 @@
 package fr.space.invader;
 
 import android.os.Handler;
-import android.os.SystemClock;
 
 /**
  * Created by Adrien on 22/04/2016.
@@ -13,12 +12,14 @@ public class ThreadSpaceInvader implements Runnable {
     private InvadersBlock block;
     private Joueur ship;
     private int screenWidth;
+    private Missile missile;
 
-    public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship, int screenWidth){
+    public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship, Missile missile, int screenWidth){
         super();
         handler=myHandler;
         this.block=block;
         this.ship=ship;
+        this.missile=missile;
         this.screenWidth=screenWidth;
     }
 
@@ -50,13 +51,22 @@ public class ThreadSpaceInvader implements Runnable {
                 if(block.getPosX()==0) {
                     block.addY(50);
                     direction=true;//Right
-                }else if(block.getPosX()==screenWidth-block.getWidth()){
+                }else if(block.getPosX()>screenWidth-block.getWidth()){
                     direction=false;//Left
                     block.addY(50);
                 }
                 block.move(direction);
+                //if(missileToucheBlock()){
+                  //  missile.relance();
+                //}
+                //else{
+                    missile.move();
+                //}
             }
             tick++;
         }
     }
+    //private boolean missileToucheBlock(){
+      //  return false;
+    //}
 }
