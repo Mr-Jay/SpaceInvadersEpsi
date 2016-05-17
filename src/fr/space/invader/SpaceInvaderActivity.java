@@ -34,13 +34,6 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
 
 
     }
-/*
-    @Override
-    public void onClick(View v) {
-        spView.click(v);
-    }
-*/
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -54,12 +47,5 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
         return true;
     }
 
-    /*
-    @Override
-    public boolean onLongClick(View v) {
 
-        spView.click(v);
-        return false;
-    }
-    */
 }

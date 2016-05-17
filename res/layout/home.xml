@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical" android:id="@+id/linearLayout1" android:weightSum="1">
+
+
+    <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="Space Invaders"
+            android:id="@+id/SpaceText"
+            android:layout_gravity="center_horizontal"
+            android:autoText="false"
+            android:textSize="30dp"
+            android:layout_weight="0.09"
+            android:textStyle="bold"/>
+    <Button
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:id="@+id/play"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.09"/>
+
+</LinearLayout>
+
