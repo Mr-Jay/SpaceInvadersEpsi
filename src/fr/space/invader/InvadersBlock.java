@@ -81,7 +81,9 @@ public class InvadersBlock extends Drawable {
     public int getWidth() {
         return width;
     }
-
+    public int getHeight(){
+        return height;
+    }
     public void setBounds(DisplayMetrics dm) {
         width=6*dm.widthPixels/10;
         height=5*dm.widthPixels/10;
@@ -91,4 +93,10 @@ public class InvadersBlock extends Drawable {
     public void addY(int i) {
         posY+=50;
     }
+
+	public Invader getLastInvader()
+    {
+        return invadersList.get(invadersList.size()-1);
+    }
+
 }

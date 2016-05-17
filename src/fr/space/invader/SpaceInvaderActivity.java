@@ -14,13 +14,12 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
     /** Called when the activity is first created. */
     private ImageButton leftBut,rightBut;
     private SpaceInvaderView spView;
-
+    static DisplayMetrics dm;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        DisplayMetrics dm=new DisplayMetrics();
+        dm=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         leftBut=(ImageButton) findViewById(R.id.left);
@@ -29,7 +28,6 @@ public class SpaceInvaderActivity extends Activity implements View.OnTouchListen
         rightBut.setOnTouchListener(this);
         spView=(SpaceInvaderView) findViewById(R.id.spaceInvaderView1);
         spView.setBottom(dm.heightPixels);
-        spView.setdm(dm);
         spView.startGame();
 
 

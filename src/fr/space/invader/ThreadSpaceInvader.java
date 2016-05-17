@@ -13,12 +13,14 @@ public class ThreadSpaceInvader implements Runnable {
     private InvadersBlock block;
     private Joueur ship;
     private int screenWidth;
+    private int alienHeight;
 
     public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship, int screenWidth){
         super();
         handler=myHandler;
         this.block=block;
         this.ship=ship;
+        alienHeight=block.getHeight()/5;
         this.screenWidth=screenWidth;
     }
 
@@ -47,6 +49,10 @@ public class ThreadSpaceInvader implements Runnable {
 
             if(tick%10==0){
                 System.out.println(block.getWidth());
+                if(block.getLastInvader().getPosY()+alienHeight>ship.getPosY())
+                {
+                    runThread=false;
+                }
                 if(block.getPosX()==0) {
                     block.addY(25);
                     direction=true;//Right

@@ -30,14 +30,9 @@ public class SpaceInvaderView extends View {
 	private InvadersBlock block;
 	private ThreadSpaceInvader thread;
 
-	private DisplayMetrics dm;
 
 
 
-	public void setdm(DisplayMetrics dm)
-	{
-		this.dm=dm;
-	}
 
 	private Handler myHandler=new Handler(){
 		public void handleMessage(Message msg){
@@ -49,30 +44,30 @@ public class SpaceInvaderView extends View {
 
 		super(context, attrs);
 
-		block=new InvadersBlock(dm);
-		joueur=new Joueur(getResources().getDrawable(R.drawable.ship),dm);
+		block=new InvadersBlock(SpaceInvaderActivity.dm);
+		joueur=new Joueur(getResources().getDrawable(R.drawable.ship),SpaceInvaderActivity.dm);
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 
-		block.setBounds(dm);
+		block.setBounds(SpaceInvaderActivity.dm);
 		Resources res = getResources();
 		Paint paint = new Paint();
 		//super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
-		canvas.drawRect(0, 0, dm.widthPixels, dm.heightPixels, paint); // (x, y, largeur, hauteur)
+		canvas.drawRect(0, 0, SpaceInvaderActivity.dm.widthPixels, SpaceInvaderActivity.dm.heightPixels, paint); // (x, y, largeur, hauteur)
 
 		block.eraseList();
-		for(int y=0; y <=4*dm.widthPixels/10; y+=dm.widthPixels/10)
+		for(int y=0; y <=4*SpaceInvaderActivity.dm.widthPixels/10; y+=SpaceInvaderActivity.dm.widthPixels/10)
 		{
-			for (int i=0 ; i<=5*dm.widthPixels/10;i+=dm.widthPixels/10)
+			for (int i=0 ; i<=5*SpaceInvaderActivity.dm.widthPixels/10;i+=SpaceInvaderActivity.dm.widthPixels/10)
 			{
 				block.addInvader(new Invader(i+block.getPosX(),y+block.getPosY(),res.getDrawable(R.drawable.alien1),block.getWidth()));
 			}
 		}
 
-		joueur.setBounds(dm);
+		joueur.setBounds(SpaceInvaderActivity.dm);
 		joueur.draw(canvas);
 		canvas.save();
 		block.draw(canvas);
@@ -81,7 +76,7 @@ public class SpaceInvaderView extends View {
 	}
 	
 	public void startGame(){
-		thread = new ThreadSpaceInvader(myHandler,block,joueur,dm.widthPixels);
+		thread = new ThreadSpaceInvader(myHandler,block,joueur,SpaceInvaderActivity.dm.widthPixels);
 		Thread thread2 = new Thread(thread);
 		thread2.start();
 	}
