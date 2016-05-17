@@ -22,9 +22,6 @@ import android.view.View;
 
 public class SpaceInvaderView extends View {
 	
-	// Dimensions souhaitées
-	/*private static final int TARGET_HEIGHT = 800;
-	private static final int TARGET_WIDTH = 600;*/
 	private int shipPosX;
 	private Joueur joueur=new Joueur(getResources().getDrawable(R.drawable.ship));
 	private InvadersBlock block;
@@ -58,7 +55,6 @@ public class SpaceInvaderView extends View {
 		block.setBounds(dm);
 		Resources res = getResources();
 		Paint paint = new Paint();
-		//super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(0, 0, dm.widthPixels, dm.heightPixels, paint); // (x, y, largeur, hauteur)
 
@@ -78,17 +74,6 @@ public class SpaceInvaderView extends View {
 
 	}
 
-/*	public void click(View v)
-	{
-
-		if(v.getId()==R.id.left){
-			joueur.moveLeft();
-		}else{
-			joueur.moveRight();
-		}
-
-
-	}*/
 	public void startGame(){
 		thread = new ThreadSpaceInvader(myHandler,block,joueur,dm.widthPixels);
 		Thread thread2 = new Thread(thread);
