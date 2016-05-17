@@ -26,7 +26,7 @@ public class SpaceInvaderView extends View {
 	/*private static final int TARGET_HEIGHT = 800;
 	private static final int TARGET_WIDTH = 600;*/
 	private int shipPosX;
-	private Joueur joueur=new Joueur(getResources().getDrawable(R.drawable.ship));
+	private Joueur joueur;
 	private InvadersBlock block;
 	private ThreadSpaceInvader thread;
 
@@ -50,6 +50,7 @@ public class SpaceInvaderView extends View {
 		super(context, attrs);
 
 		block=new InvadersBlock(dm);
+		joueur=new Joueur(getResources().getDrawable(R.drawable.ship),dm);
 	}
 
 	@Override
@@ -71,24 +72,14 @@ public class SpaceInvaderView extends View {
 			}
 		}
 
+		joueur.setBounds(dm);
 		joueur.draw(canvas);
 		canvas.save();
 		block.draw(canvas);
 		canvas.restore();
 
 	}
-
-/*	public void click(View v)
-	{
-
-		if(v.getId()==R.id.left){
-			joueur.moveLeft();
-		}else{
-			joueur.moveRight();
-		}
-
-
-	}*/
+	
 	public void startGame(){
 		thread = new ThreadSpaceInvader(myHandler,block,joueur,dm.widthPixels);
 		Thread thread2 = new Thread(thread);
