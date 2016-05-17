@@ -12,13 +12,15 @@ public class ThreadSpaceInvader implements Runnable {
     private long currentTime,startTime;
     private InvadersBlock block;
     private Joueur ship;
+    private Missile missile;
     private int screenWidth;
 
-    public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship, int screenWidth){
+    public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship,Missile missile, int screenWidth){
         super();
         handler=myHandler;
         this.block=block;
         this.ship=ship;
+        this.missile = missile;
         this.screenWidth=screenWidth;
     }
 
@@ -55,6 +57,9 @@ public class ThreadSpaceInvader implements Runnable {
                     block.addY(25);
                 }
                 block.move(direction);
+
+                missile.move();
+
             }
             tick++;
         }

@@ -18,7 +18,7 @@ public class Missile extends Drawable {
 
         this.ship = joueur;
         this.posX = this.ship.getPosX();
-        this.posY = 0; //Démarrage du missile à la posY du vaisseau
+        this.posY = this.ship.getPosY(); //Démarrage du missile à la posY du vaisseau
 
         missile=img;
         missile.setBounds(posX,posY,posX+10,posY+56);

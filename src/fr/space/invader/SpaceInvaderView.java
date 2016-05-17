@@ -27,12 +27,11 @@ public class SpaceInvaderView extends View {
 	private static final int TARGET_WIDTH = 600;*/
 	private int shipPosX;
 	private Joueur joueur;
+	private Missile missile;
 	private InvadersBlock block;
 	private ThreadSpaceInvader thread;
 
 	private DisplayMetrics dm;
-
-
 
 	public void setdm(DisplayMetrics dm)
 	{
@@ -50,7 +49,8 @@ public class SpaceInvaderView extends View {
 		super(context, attrs);
 
 		block=new InvadersBlock(dm);
-		joueur=new Joueur(getResources().getDrawable(R.drawable.ship),dm);
+		this.joueur=new Joueur(getResources().getDrawable(R.drawable.ship),dm);
+		this.missile=new Missile(getResources().getDrawable(R.drawable.missile),joueur);
 	}
 
 	@Override
@@ -74,6 +74,7 @@ public class SpaceInvaderView extends View {
 
 		joueur.setBounds(dm);
 		joueur.draw(canvas);
+		missile.draw(canvas);
 		canvas.save();
 		block.draw(canvas);
 		canvas.restore();
@@ -81,7 +82,7 @@ public class SpaceInvaderView extends View {
 	}
 	
 	public void startGame(){
-		thread = new ThreadSpaceInvader(myHandler,block,joueur,dm.widthPixels);
+		thread = new ThreadSpaceInvader(myHandler,block,joueur,missile,dm.widthPixels);
 		Thread thread2 = new Thread(thread);
 		thread2.start();
 	}
