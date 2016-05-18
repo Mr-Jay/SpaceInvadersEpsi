@@ -58,9 +58,11 @@ public class InvadersBlock extends Drawable {
     @Override
     public void draw(Canvas canvas) {
         for (Invader invader:invadersList) {
-            invader.draw(canvas);
-        }
+            if(invader != null){
+                invader.draw(canvas);
+            }
 
+        }
     }
 
     public void eraseList(){
@@ -82,12 +84,18 @@ public class InvadersBlock extends Drawable {
             posX+=width/12;//Se deplace de la moitié d'un alien vers la droite
             for(Invader inv : invadersList)
             {
-                inv.move(width/12);
+                if(inv != null){
+                    inv.move(width/12);
+                }
+
             }
         }else{
             posX-=width/12;//idem vers la gauche
             for(Invader inv:invadersList) {
-                inv.move(-width / 12);
+                if(inv != null){
+                    inv.move(-width / 12);
+                }
+
             }
         }
     }
@@ -103,7 +111,10 @@ public class InvadersBlock extends Drawable {
     public void addY(int i) {
         posY+=50;
         for(Invader inv:invadersList){
-            inv.addY();
+            if(inv != null){
+                inv.addY();
+            }
+
         }
     }
 
@@ -113,18 +124,28 @@ public class InvadersBlock extends Drawable {
     }
 
     public void suppUnInvader(int x, int y){
-        this.invadersList.remove(x*y-1);
-        System.out.println("remove : "+x+" : "+y);
+        this.invadersList.set((6*(y-1))+x-1,null);
+        //this.invadersList.remove((6*(y-1))+x-1);
+        //System.out.println("remove : "+x+" : "+y);
+    }
+
+    public boolean invaderExist(int x, int y){
+        if(this.invadersList.get((6*(y-1))+x-1) != null){
+            return true;
+        }
+        return false;
     }
 
     public boolean toucheUnVaisseau(int x,int y){
         if(x>=this.posX && x<=this.posX+this.width && y>=this.posY && y<=this.posY+this.height){//Touche le bloc d'ennemis
             int invX = (x-this.posX)/(SpaceInvaderActivity.dm.widthPixels/10)+1;
-            System.out.println("invX : "+invX);
             int invY = (y-this.posY)/(SpaceInvaderActivity.dm.widthPixels/10)+1;
-            System.out.println("invY : "+invY);
-            this.suppUnInvader(invX,invY);
-            return true;
+
+            if(invaderExist(invX, invY)){
+                this.suppUnInvader(invX,invY);
+                return true;
+            }
+            return false;
         }
         return false;
     }

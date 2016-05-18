@@ -51,10 +51,10 @@ public class ThreadSpaceInvader implements Runnable {
 
             if(tick%10==0){
                 System.out.println(block.getWidth());
-                if(block.getLastInvader().getPosY()+alienHeight>ship.getPosY())
+                /*if(block.getLastInvader().getPosY()+alienHeight>ship.getPosY())
                 {
                     runThread=false;
-                }
+                }*/
                 if(block.getPosX()==0) {
                     block.addY(25);
                     direction=true;//Right
