@@ -3,9 +3,12 @@ package fr.space.invader;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.SweepGradient;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.prefs.Preferences;
 
 /**
  * Created by Adrien on 22/04/2016.
@@ -89,8 +92,20 @@ public class InvadersBlock extends Drawable {
         return invadersList.get(invadersList.size()-1);
     }
 
-    public boolean toucheUnVaisseau(int x,int y){
+    public void suppUnInvader(int x, int y){
+        this.invadersList.remove(x*y-1);
+        System.out.println("remove : "+x+" : "+y);
+    }
 
+    public boolean toucheUnVaisseau(int x,int y){
+        if(x>=this.posX && x<=this.posX+this.width && y>=this.posY && y<=this.posY+this.height){//Touche le bloc d'ennemis
+            int invX = (x-this.posX)/(SpaceInvaderActivity.dm.widthPixels/10)+1;
+            System.out.println("invX : "+invX);
+            int invY = (y-this.posY)/(SpaceInvaderActivity.dm.widthPixels/10)+1;
+            System.out.println("invY : "+invY);
+            this.suppUnInvader(invX,invY);
+            return true;
+        }
         return false;
     }
 
