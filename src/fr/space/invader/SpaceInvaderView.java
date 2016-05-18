@@ -27,8 +27,8 @@ public class SpaceInvaderView extends View {
 	public SpaceInvaderView(Context context, AttributeSet attrs) {
 
 		super(context, attrs);
-
-		block=new InvadersBlock(SpaceInvaderActivity.dm);
+		Resources res = getResources();
+		this.block=new InvadersBlock(getResources().getDrawable(R.drawable.alien1));
 		this.joueur=new Joueur(getResources().getDrawable(R.drawable.ship), SpaceInvaderActivity.dm);
 		this.missile=new Missile(getResources().getDrawable(R.drawable.missile),joueur);
 	}
@@ -36,21 +36,13 @@ public class SpaceInvaderView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 
-		block.setBounds(SpaceInvaderActivity.dm);
-		Resources res = getResources();
+
 		Paint paint = new Paint();
 		//super.onDraw(canvas);
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(0, 0, SpaceInvaderActivity.dm.widthPixels, SpaceInvaderActivity.dm.heightPixels, paint); // (x, y, largeur, hauteur)
 
-		block.eraseList();
-		for(int y=0; y <=4*SpaceInvaderActivity.dm.widthPixels/10; y+=SpaceInvaderActivity.dm.widthPixels/10)
-		{
-			for (int i=0 ; i<=5*SpaceInvaderActivity.dm.widthPixels/10;i+=SpaceInvaderActivity.dm.widthPixels/10)
-			{
-				block.addInvader(new Invader(i+block.getPosX(),y+block.getPosY(),res.getDrawable(R.drawable.alien1),block.getWidth()));
-			}
-		}
+
 
 		joueur.setBounds(SpaceInvaderActivity.dm);
 		joueur.draw(canvas);
