@@ -33,6 +33,12 @@ public class Joueur extends Drawable{
     public int getPosY(){
         return posY;
     }
+    public int getWidth(){
+        return this.width;
+    }
+    public int getHeight(){
+        return this.height;
+    }
 
     @Override
     public void draw(Canvas canvas)
@@ -72,10 +78,10 @@ public class Joueur extends Drawable{
     }
 
     public void setBounds(DisplayMetrics dm) {
-        width=dm.widthPixels/12;
-        height=dm.widthPixels/12;
-        posXMax=dm.widthPixels-width;
-        posY=(int) (dm.heightPixels*0.6f);
+        width=SpaceInvaderActivity.dm.widthPixels/12;
+        height=SpaceInvaderActivity.dm.widthPixels/12;
+        posXMax=SpaceInvaderActivity.dm.widthPixels-width;
+        posY=(int) (SpaceInvaderActivity.dm.heightPixels*0.6f);
        // this.setBounds(posX,posY,posX+width,posY+height);
     }
     @Override

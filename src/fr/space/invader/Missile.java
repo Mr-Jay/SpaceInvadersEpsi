@@ -17,8 +17,8 @@ public class Missile extends Drawable {
     public Missile(Drawable img, Joueur joueur){
 
         this.ship = joueur;
-        this.posX = this.ship.getPosX();
-        this.posY = this.ship.getPosY(); //Démarrage du missile à la posY du vaisseau
+        this.posX = this.ship.getPosX()+(this.ship.getWidth()/2); // Démarrage du missile au milieu du vaisseau
+        this.posY = (int) (SpaceInvaderActivity.dm.heightPixels*0.6f-this.ship.getHeight()); //Démarrage du missile à la posY du vaisseau
 
         missile=img;
         missile.setBounds(posX,posY,posX+10,posY+56);
@@ -32,7 +32,9 @@ public class Missile extends Drawable {
     public int getPosY() {
         return posY;
     }
-
+    public int getPosX() {
+        return posX;
+    }
 
     @Override
     public void draw(Canvas canvas)
@@ -57,13 +59,12 @@ public class Missile extends Drawable {
     }
 
     public void move() {
-        this.posY += 25;
+        this.posY -= 30;
     }
 
     public void relance() {
-        this.posX = ship.getPosX();
-        this.posY = 0;
-    }
+        this.posX = this.ship.getPosX()+(this.ship.getWidth()/2); // Démarrage du missile au milieu du vaisseau
+        this.posY = (int) (SpaceInvaderActivity.dm.heightPixels*0.6f-this.ship.getHeight());    }
 
 }
 

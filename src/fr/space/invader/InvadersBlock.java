@@ -1,12 +1,10 @@
 package fr.space.invader;
 
-import android.content.Context;
-import android.content.res.Resources;
+
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
-
 import java.util.ArrayList;
 
 /**
@@ -25,12 +23,9 @@ public class InvadersBlock extends Drawable {
 
     public InvadersBlock(DisplayMetrics dm)
     {
-        
-
         posX=0;
         posY=0;
         invadersList=new ArrayList<Invader>();
-
     }
 
     public int getPosX() {
@@ -55,14 +50,10 @@ public class InvadersBlock extends Drawable {
         invadersList=new ArrayList<Invader>();
     }
     @Override
-    public void setAlpha(int alpha) {
-
-    }
+    public void setAlpha(int alpha) {}
 
     @Override
-    public void setColorFilter(ColorFilter cf) {
-
-    }
+    public void setColorFilter(ColorFilter cf) {}
 
     @Override
     public int getOpacity() {
@@ -77,11 +68,12 @@ public class InvadersBlock extends Drawable {
         }
     }
 
-
     public int getWidth() {
         return width;
     }
-
+    public int getHeight(){
+        return height;
+    }
     public void setBounds(DisplayMetrics dm) {
         width=6*dm.widthPixels/10;
         height=5*dm.widthPixels/10;
@@ -91,4 +83,15 @@ public class InvadersBlock extends Drawable {
     public void addY(int i) {
         posY+=50;
     }
+
+	public Invader getLastInvader()
+    {
+        return invadersList.get(invadersList.size()-1);
+    }
+
+    public boolean toucheUnVaisseau(int x,int y){
+
+        return false;
+    }
+
 }

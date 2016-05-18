@@ -14,6 +14,7 @@ public class ThreadSpaceInvader implements Runnable {
     private Joueur ship;
     private Missile missile;
     private int screenWidth;
+    private int alienHeight;
 
     public ThreadSpaceInvader(Handler myHandler, InvadersBlock block, Joueur ship,Missile missile, int screenWidth){
         super();
@@ -21,6 +22,7 @@ public class ThreadSpaceInvader implements Runnable {
         this.block=block;
         this.ship=ship;
         this.missile = missile;
+        alienHeight=block.getHeight()/5;
         this.screenWidth=screenWidth;
     }
 
@@ -49,6 +51,10 @@ public class ThreadSpaceInvader implements Runnable {
 
             if(tick%10==0){
                 System.out.println(block.getWidth());
+                if(block.getLastInvader().getPosY()+alienHeight>ship.getPosY())
+                {
+                    runThread=false;
+                }
                 if(block.getPosX()==0) {
                     block.addY(25);
                     direction=true;//Right
@@ -58,10 +64,22 @@ public class ThreadSpaceInvader implements Runnable {
                 }
                 block.move(direction);
 
-                missile.move();
 
+
+            }
+            if(tick%2==0){
+                if(missile.getPosY()<=0||MissileToucheVaisseau()){
+                    missile.relance();
+
+                }
+                else{// Le missile n'a rien touché
+                    missile.move();
+                }
             }
             tick++;
         }
+    }
+    private boolean MissileToucheVaisseau(){
+        return block.toucheUnVaisseau(this.missile.getPosX(),this.missile.getPosY());
     }
 }
